@@ -133,6 +133,18 @@
 
     /* ── Mobile (≤ 480px) ── */
     @media (max-width: 480px) {
+      html, body, .wrapper {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .wrapper {
+        height: 100vh;
+        min-height: 100vh;
+        min-height: 100dvh;
+      }
+
       .blob-top-right {
         width: 110%;
         top: -2%;
