@@ -1,7 +1,7 @@
-<svg width="390" height="380" viewBox="0 0 390 380" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M160,0 L390,0 L390,340 C320,385 250,310 195,355 C160,382 120,335 100,280 C80,225 105,110 160,0 Z" fill="url(#top_mobile_grad)"/>
+<svg width="390" height="400" viewBox="0 0 390 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M115,0 L390,0 L390,375 C355,400 310,368 278,394 C246,420 216,380 193,338 C170,296 150,182 115,0 Z" fill="url(#grad_top)"/>
   <defs>
-    <linearGradient id="top_mobile_grad" x1="390" y1="0" x2="100" y2="360" gradientUnits="userSpaceOnUse">
+    <linearGradient id="grad_top" x1="390" y1="0" x2="120" y2="380" gradientUnits="userSpaceOnUse">
       <stop stop-color="#0F3443"/>
       <stop offset="1" stop-color="#34E89E"/>
     </linearGradient>
