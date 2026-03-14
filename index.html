@@ -18,17 +18,18 @@
     html, body {
       width: 100%;
       height: 100%;
+      overflow: hidden;
     }
 
     body {
       background-color: #ffffff;
       font-family: 'Montserrat', sans-serif;
-      position: relative;
     }
 
     .wrapper {
       width: 100vw;
-      min-height: 100vh;
+      height: 100vh;
+      height: 100dvh;
       position: relative;
       overflow: hidden;
       display: flex;
@@ -41,8 +42,6 @@
       pointer-events: none;
       user-select: none;
     }
-
-    .blob-mob { display: none; }
 
     .blob-top-right {
       top: -6%;
@@ -112,95 +111,61 @@
     /* ── Tablet (≤ 768px) ── */
     @media (max-width: 768px) {
       .blob-top-right {
-        width: 85%;
-        top: -3%;
-        right: -5%;
+        width: 75%;
+        top: -4%;
+        right: -4%;
       }
 
       .blob-bottom-left {
-        width: 100%;
-        left: -5%;
-        bottom: -2%;
+        width: 85%;
+        left: -3%;
+        bottom: -3%;
       }
 
-      .content {
-        margin-left: 8%;
-      }
-
-      .social {
-        left: 8%;
-        bottom: 5%;
-      }
+      .content { margin-left: 8%; }
+      .social { left: 8%; bottom: 5%; }
     }
 
     /* ── Mobile (≤ 480px) ── */
     @media (max-width: 480px) {
-      html, body {
-        height: 100%;
-        overflow: hidden;
-      }
-
-      .wrapper {
-        height: 100vh;
-        height: 100dvh;
-        min-height: unset;
-        overflow: hidden;
-        align-items: center;
-      }
-
-      .blob-desk { display: none; }
-      .blob-mob  { display: block; }
-
       .blob-top-right {
-        width: 100%;
-        height: auto;
-        top: 0;
-        right: 0;
+        width: 55%;
+        top: -2%;
+        right: -2%;
       }
 
       .blob-bottom-left {
-        width: 100%;
-        height: auto;
-        bottom: 0;
-        left: 0;
-        transform: none;
+        width: 70%;
+        left: -2%;
+        bottom: -2%;
       }
 
       .content {
-        margin-left: 7%;
-        margin-top: -6vh;
+        margin-left: 6%;
+        margin-top: -4vh;
       }
 
       .social {
-        left: 6%;
+        left: 5%;
         bottom: 3%;
         gap: 1rem;
       }
 
-      .social a i {
-        font-size: 1.9rem;
-      }
+      .social a i { font-size: 1.8rem; }
     }
   </style>
 </head>
 <body>
   <div class="wrapper">
 
-    <!-- Blob top-right -->
-    <img class="blob blob-top-right blob-desk" src="Componentes/baloom.svg" alt="" aria-hidden="true"/>
-    <img class="blob blob-top-right blob-mob"  src="Componentes/baloom-top-mobile.svg" alt="" aria-hidden="true"/>
+    <img class="blob blob-top-right" src="Componentes/baloom.svg" alt="" aria-hidden="true"/>
+    <img class="blob blob-bottom-left" src="Componentes/baloom2.svg" alt="" aria-hidden="true"/>
 
-    <!-- Blob bottom-left -->
-    <img class="blob blob-bottom-left blob-desk" src="Componentes/baloom2.svg" alt="" aria-hidden="true"/>
-    <img class="blob blob-bottom-left blob-mob"  src="Componentes/baloom-mobile.svg" alt="" aria-hidden="true"/>
-
-    <!-- Main text -->
     <div class="content">
       <h1>Muy Pronto..</h1>
       <p>Portafolio Kelvin Corporán</p>
     </div>
 
-    <!-- Social icons -->
     <div class="social">
       <a href="https://github.com/kcorporangomez" target="_blank" rel="noopener" aria-label="GitHub">
         <i class="fab fa-github"></i>
