@@ -36,6 +36,12 @@
       align-items: center;
     }
 
+    @media (max-width: 480px) {
+      .wrapper {
+        height: 100lvh;
+      }
+    }
+
     /* ── Blobs ── */
     .blob {
       position: absolute;
@@ -130,14 +136,14 @@
     @media (max-width: 480px) {
       .blob-top-right {
         width: 92%;
-        top: calc(-2% - env(safe-area-inset-top));
+        top: -8%;
         right: -2%;
       }
 
       .blob-bottom-left {
         width: 108%;
         left: -2%;
-        bottom: calc(-2% - env(safe-area-inset-bottom));
+        bottom: -10%;
       }
 
       .content {
