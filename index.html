@@ -42,7 +42,6 @@
       user-select: none;
     }
 
-    .blob-mobile { display: none; }
 
     .blob-top-right {
       top: -6%;
@@ -149,19 +148,21 @@
       }
 
       .blob-top-right {
-        width: 85%;
+        width: auto;
+        height: 44vh;
         top: 0;
         right: 0;
+        object-fit: cover;
+        object-position: right top;
       }
-
-      .blob-desktop { display: none; }
-      .blob-mobile  { display: block; }
 
       .blob-bottom-left {
         width: 100%;
-        height: auto;
+        height: 44vh;
         bottom: 0;
         left: 0;
+        object-fit: cover;
+        object-position: left bottom;
         transform: none;
       }
 
@@ -185,32 +186,18 @@
 <body>
   <div class="wrapper">
 
-    <!-- Blob top-right (desktop) -->
+    <!-- Blob top-right -->
     <img
-      class="blob blob-top-right blob-desktop"
+      class="blob blob-top-right"
       src="Componentes/baloom.svg"
       alt=""
       aria-hidden="true"
     />
-    <!-- Blob top-right (mobile) -->
-    <img
-      class="blob blob-top-right blob-mobile"
-      src="Componentes/baloom-top-mobile.svg"
-      alt=""
-      aria-hidden="true"
-    />
 
-    <!-- Blob bottom-left (desktop) -->
+    <!-- Blob bottom-left -->
     <img
-      class="blob blob-bottom-left blob-desktop"
+      class="blob blob-bottom-left"
       src="Componentes/baloom2.svg"
-      alt=""
-      aria-hidden="true"
-    />
-    <!-- Blob bottom-left (mobile) -->
-    <img
-      class="blob blob-bottom-left blob-mobile"
-      src="Componentes/baloom-mobile.svg"
       alt=""
       aria-hidden="true"
     />
