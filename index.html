@@ -149,9 +149,9 @@
       }
 
       .blob-top-right {
-        width: 88%;
+        width: 85%;
         top: 0;
-        right: -5%;
+        right: 0;
       }
 
       .blob-desktop { display: none; }
@@ -185,10 +185,17 @@
 <body>
   <div class="wrapper">
 
-    <!-- Blob top-right -->
+    <!-- Blob top-right (desktop) -->
     <img
-      class="blob blob-top-right"
+      class="blob blob-top-right blob-desktop"
       src="Componentes/baloom.svg"
+      alt=""
+      aria-hidden="true"
+    />
+    <!-- Blob top-right (mobile) -->
+    <img
+      class="blob blob-top-right blob-mobile"
+      src="Componentes/baloom-top-mobile.svg"
       alt=""
       aria-hidden="true"
     />
