@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Portafolio Kelvin Corporán</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -130,14 +130,14 @@
     @media (max-width: 480px) {
       .blob-top-right {
         width: 92%;
-        top: -2%;
+        top: calc(-2% - env(safe-area-inset-top));
         right: -2%;
       }
 
       .blob-bottom-left {
         width: 108%;
         left: -2%;
-        bottom: -2%;
+        bottom: calc(-2% - env(safe-area-inset-bottom));
       }
 
       .content {
