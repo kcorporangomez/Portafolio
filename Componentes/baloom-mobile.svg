@@ -1,8 +1,8 @@
 <svg width="390" height="420" viewBox="0 0 390 420" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M0,210 C70,110 150,250 220,170 C290,90 340,175 390,140 L390,420 L0,420 Z" fill="url(#mobile_grad)"/>
+  <path d="M0,195 C48,142 95,202 145,168 C195,134 245,188 295,158 C333,138 362,152 390,147 L390,420 L0,420 Z" fill="url(#grad_bottom)"/>
   <defs>
-    <linearGradient id="mobile_grad" x1="195" y1="90" x2="195" y2="420" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#34E69D"/>
+    <linearGradient id="grad_bottom" x1="195" y1="140" x2="195" y2="420" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#34E89E"/>
       <stop offset="1" stop-color="#0F3443"/>
     </linearGradient>
   </defs>

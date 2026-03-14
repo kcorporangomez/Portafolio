@@ -42,6 +42,7 @@
       user-select: none;
     }
 
+    .blob-mob { display: none; }
 
     .blob-top-right {
       top: -6%;
@@ -147,22 +148,21 @@
         align-items: center;
       }
 
+      .blob-desk { display: none; }
+      .blob-mob  { display: block; }
+
       .blob-top-right {
-        width: auto;
-        height: 44vh;
+        width: 100%;
+        height: auto;
         top: 0;
         right: 0;
-        object-fit: cover;
-        object-position: right top;
       }
 
       .blob-bottom-left {
         width: 100%;
-        height: 44vh;
+        height: auto;
         bottom: 0;
         left: 0;
-        object-fit: cover;
-        object-position: left bottom;
         transform: none;
       }
 
@@ -187,20 +187,12 @@
   <div class="wrapper">
 
     <!-- Blob top-right -->
-    <img
-      class="blob blob-top-right"
-      src="Componentes/baloom.svg"
-      alt=""
-      aria-hidden="true"
-    />
+    <img class="blob blob-top-right blob-desk" src="Componentes/baloom.svg" alt="" aria-hidden="true"/>
+    <img class="blob blob-top-right blob-mob"  src="Componentes/baloom-top-mobile.svg" alt="" aria-hidden="true"/>
 
     <!-- Blob bottom-left -->
-    <img
-      class="blob blob-bottom-left"
-      src="Componentes/baloom2.svg"
-      alt=""
-      aria-hidden="true"
-    />
+    <img class="blob blob-bottom-left blob-desk" src="Componentes/baloom2.svg" alt="" aria-hidden="true"/>
+    <img class="blob blob-bottom-left blob-mob"  src="Componentes/baloom-mobile.svg" alt="" aria-hidden="true"/>
 
     <!-- Main text -->
     <div class="content">
