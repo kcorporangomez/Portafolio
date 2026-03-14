@@ -1,6 +1,6 @@
 # Portafolio Kelvin Corporán
 
-Landing page tipo "Coming Soon" para anunciar el portafolio personal de Kelvin Corporán.
+Landing page tipo "Coming Soon" para anunciar mi portafolio personal.
 
 ## Vista previa
 
