@@ -133,38 +133,46 @@
 
     /* ── Mobile (≤ 480px) ── */
     @media (max-width: 480px) {
-      html, body, .wrapper {
+      html, body {
         height: 100%;
-        width: 100%;
         overflow: hidden;
       }
 
       .wrapper {
         height: 100vh;
-        min-height: 100vh;
-        min-height: 100dvh;
+        height: 100dvh;
+        min-height: unset;
+        overflow: hidden;
+        align-items: center;
       }
 
       .blob-top-right {
-        width: 110%;
+        width: 95%;
         top: -2%;
-        right: -8%;
+        right: -5%;
       }
 
       .blob-bottom-left {
-        width: 120%;
-        left: -8%;
-        bottom: -2%;
+        height: 42vh;
+        width: auto;
+        min-width: 110%;
+        bottom: 0;
+        left: -5%;
       }
 
       .content {
-        margin-left: 6%;
+        margin-left: 7%;
+        margin-top: -8vh;
       }
 
       .social {
         left: 6%;
         bottom: 3%;
-        gap: 0.8rem;
+        gap: 1rem;
+      }
+
+      .social a i {
+        font-size: 1.9rem;
       }
     }
   </style>
