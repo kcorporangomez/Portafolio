@@ -27,22 +27,22 @@
 
     /* ─── NAV ─── */
     nav {
-      position: fixed;
+      position: absolute;
       top: 0; left: 0; right: 0;
-      z-index: 100;
+      z-index: 10;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1.2rem 4%;
+      padding: 1.4rem 3%;
     }
 
-    .nav-logo img { height: 28px; }
+    .nav-logo img { height: 26px; }
 
     .nav-github a {
       color: #fff;
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       background: var(--teal);
-      width: 44px; height: 44px;
+      width: 42px; height: 42px;
       border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
       text-decoration: none;
@@ -58,55 +58,65 @@
 
     /* ─── HERO ─── */
     #hero {
-      min-height: 100vh;
+      height: 100vh;
+      min-height: 500px;
+      background: #fff;
       display: flex;
       align-items: center;
     }
 
     .hero-blob {
       position: absolute;
-      top: -6%; right: -4%;
-      width: 56%;
+      top: -8%;
+      right: -3%;
+      width: 62%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-circle {
+      position: absolute;
+      bottom: 10%;
+      left: -2%;
+      width: 9%;
       pointer-events: none;
       z-index: 0;
     }
 
     .hero-inner {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       width: 100%;
-      display: flex;
-      align-items: center;
-      padding: 0 4%;
+      padding: 0 3%;
     }
 
     .hero-text {
-      max-width: 440px;
-      padding: 8rem 0 4rem;
+      max-width: 400px;
+      margin-left: 5%;
     }
 
     .hero-text h1 {
-      font-size: clamp(1.6rem, 3vw, 2.6rem);
+      font-size: clamp(1.4rem, 2.5vw, 2.2rem);
       font-weight: 800;
       color: var(--teal);
-      line-height: 1.2;
+      line-height: 1.25;
     }
 
     .hero-text p {
-      margin-top: .5rem;
-      font-size: clamp(.95rem, 1.4vw, 1.1rem);
+      margin-top: .4rem;
+      font-size: clamp(.85rem, 1.2vw, 1rem);
       color: #666;
     }
 
     .btn {
       display: inline-block;
-      margin-top: 1.8rem;
-      padding: .75rem 2.2rem;
+      margin-top: 1.6rem;
+      padding: .65rem 2rem;
       background: var(--teal);
       color: #fff;
       border-radius: 30px;
       font-weight: 700;
-      font-size: .95rem;
+      font-size: .88rem;
       text-decoration: none;
       transition: opacity .2s;
     }
@@ -114,10 +124,10 @@
 
     .hero-img {
       position: absolute;
-      right: 4%;
+      right: 5%;
       bottom: 0;
-      width: 40%;
-      max-width: 500px;
+      width: 42%;
+      max-width: 520px;
       z-index: 2;
     }
 
@@ -442,7 +452,9 @@
 
   <!-- HERO -->
   <section id="hero">
-    <img class="hero-blob" src="Componentes/baloom.svg" alt="" aria-hidden="true" />
+    <img class="hero-blob"   src="Componentes/baloom.svg"   alt="" aria-hidden="true" />
+    <img class="hero-circle" src="Componentes/baloomp2.svg" alt="" aria-hidden="true" />
+
     <div class="hero-inner">
       <div class="hero-text">
         <h1>Hey, Soy Kelvin Corporán</h1>
@@ -450,6 +462,7 @@
         <a href="#contacto" class="btn">Contáctame</a>
       </div>
     </div>
+
     <img class="hero-img" src="Componentes/Developer.svg" alt="Kelvin Corporán desarrollando" />
   </section>
 
