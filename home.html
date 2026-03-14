@@ -92,44 +92,46 @@
 
     .hero-text {
       margin-left: 12%;
-      white-space: nowrap;
     }
 
     .hero-text h1 {
-      font-size: clamp(1.2rem, 2vw, 1.9rem);
-      font-weight: 800;
+      font-size: 3.2vw;
+      font-weight: 600;
       color: var(--teal);
       line-height: 1.2;
       white-space: nowrap;
     }
 
     .hero-text p {
-      margin-top: .4rem;
-      font-size: clamp(.8rem, 1.1vw, .95rem);
+      margin-top: .5rem;
+      font-size: 1.7vw;
       color: #666;
-      white-space: normal;
     }
 
     .btn {
       display: inline-block;
-      margin-top: 1.4rem;
-      padding: .6rem 1.8rem;
+      margin-top: 1.6rem;
+      padding: .75rem 2.2rem;
       background: var(--teal);
       color: #fff;
       border-radius: 30px;
-      font-weight: 700;
-      font-size: .85rem;
+      font-weight: 500;
+      font-size: 1.3vw;
       text-decoration: none;
-      transition: opacity .2s;
+      box-shadow: 0 8px 20px rgba(15, 52, 67, 0.35);
+      transition: opacity .2s, box-shadow .2s;
     }
-    .btn:hover { opacity: .85; }
+    .btn:hover {
+      opacity: .85;
+      box-shadow: 0 12px 28px rgba(15, 52, 67, 0.45);
+    }
 
     .hero-img {
       position: absolute;
-      right: 3%;
-      bottom: 0;
-      width: 36%;
-      max-width: 460px;
+      right: 10%;
+      bottom: 1%;
+      width: 80%;
+      max-width: 1000px;
       z-index: 2;
     }
 
@@ -571,7 +573,6 @@
 
   <!-- FOOTER -->
   <footer>
-    <img class="footer-blob" src="Componentes/baloomfooter.svg" alt="" aria-hidden="true" />
     <p>Hecho por Kelvin Corporán</p>
     <div class="footer-social">
       <a href="https://github.com/kcorporangomez" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
