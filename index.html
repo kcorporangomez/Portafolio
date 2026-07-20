@@ -953,6 +953,10 @@
           contactStatus.textContent = '¡Mensaje enviado! Te responderé pronto.';
           contactStatus.className = 'contact-status success';
           contactForm.reset();
+          setTimeout(() => {
+            contactStatus.textContent = '';
+            contactStatus.className = 'contact-status';
+          }, 10000);
         } catch (err) {
           const friendlyMessage = err instanceof TypeError
             ? 'No se pudo conectar. Revisa tu conexión a internet e intenta de nuevo.'
