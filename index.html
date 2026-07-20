@@ -321,6 +321,7 @@
       z-index: 2;
       overflow: hidden;
       cursor: grab;
+      touch-action: pan-y;
       -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
       mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
     }
@@ -424,6 +425,7 @@
 
     .form-group {
       margin-bottom: 1.5rem;
+      position: relative;
     }
 
     .form-group label {
@@ -441,7 +443,7 @@
       border: 1.5px solid #ddd;
       border-radius: 8px;
       font-family: 'Montserrat', sans-serif;
-      font-size: .9rem;
+      font-size: 16px;
       outline: none;
       transition: border-color .2s;
     }
@@ -450,6 +452,41 @@
     .form-group textarea:focus { border-color: var(--green); }
 
     .form-group textarea { height: 120px; resize: none; }
+
+    .form-group.invalid input,
+    .form-group.invalid textarea {
+      border-color: #c0392b;
+    }
+
+    .field-tooltip {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: 100%;
+      margin-top: .35rem;
+      background: var(--teal);
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 500;
+      line-height: 1.3;
+      padding: .45rem .75rem;
+      border-radius: 8px;
+      z-index: 5;
+      box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    }
+
+    .field-tooltip::before {
+      content: '';
+      position: absolute;
+      bottom: 100%;
+      left: 14px;
+      border: 6px solid transparent;
+      border-bottom-color: var(--teal);
+    }
+
+    .form-group.invalid .field-tooltip {
+      display: block;
+    }
 
     .btn-submit {
       display: block;
@@ -716,7 +753,7 @@
           <span>JIRA</span>
         </div>
         <div class="skill-item">
-          <img src="Componentes/confluence.svg" alt="Confluence" />
+          <img src="Componentes/Confluence.svg" alt="Confluence" />
           <span>CONFLUENCE</span>
         </div>
         <div class="skill-item">
@@ -773,18 +810,21 @@
 
     <div class="contact-box">
       <h2>Contactame</h2>
-      <form id="contactForm">
+      <form id="contactForm" novalidate>
         <div class="form-group">
           <label for="nombre">Nombre</label>
           <input type="text" id="nombre" name="nombre" required maxlength="100" />
+          <span class="field-tooltip">Escribe tu nombre</span>
         </div>
         <div class="form-group">
           <label for="correo">Correo</label>
           <input type="email" id="correo" name="correo" required maxlength="254" />
+          <span class="field-tooltip">Escribe un correo válido</span>
         </div>
         <div class="form-group">
           <label for="comentario">Comentario</label>
           <textarea id="comentario" name="comentario" required maxlength="3000"></textarea>
+          <span class="field-tooltip">Escribe un comentario</span>
         </div>
         <!-- Honeypot: hidden from real visitors, bots that auto-fill every field trip it. -->
         <div class="hp-field" aria-hidden="true">
@@ -812,6 +852,11 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
   <script>
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+
     const greetingEl = document.getElementById('greeting');
     if (greetingEl && typeof anime !== 'undefined') {
       const greetings = ['Hey..', 'Hello', 'Hola.'];
@@ -860,6 +905,9 @@
       let isDragging = false;
       let dragStartX = 0;
       let dragStartTranslate = 0;
+      let momentumVelocity = 0; // px per ms, decays after release
+      let lastMoveX = 0;
+      let lastMoveTime = 0;
 
       const normalize = (val) => {
         let v = val % distance;
@@ -869,7 +917,12 @@
 
       function tick(now) {
         if (!isDragging) {
-          if (lastTime !== null) {
+          if (Math.abs(momentumVelocity) > 0.01) {
+            const dt = lastTime !== null ? now - lastTime : 0;
+            x = normalize(x + momentumVelocity * dt);
+            momentumVelocity *= 0.94; // decay toward 0 each frame
+          } else if (lastTime !== null) {
+            momentumVelocity = 0;
             x = normalize(x - (speed * (now - lastTime)) / 1000);
           }
           anime.set(skillsTrack, { translateX: x });
@@ -885,15 +938,27 @@
 
       function dragStart(e) {
         isDragging = true;
+        momentumVelocity = 0;
         dragStartX = getClientX(e);
         dragStartTranslate = x;
+        lastMoveX = dragStartX;
+        lastMoveTime = performance.now();
         skillsCarousel.classList.add('dragging');
       }
 
       function dragMove(e) {
         if (!isDragging) return;
-        x = normalize(dragStartTranslate + (getClientX(e) - dragStartX));
+        const clientX = getClientX(e);
+        const now = performance.now();
+        x = normalize(dragStartTranslate + (clientX - dragStartX));
         anime.set(skillsTrack, { translateX: x });
+
+        const dt = now - lastMoveTime;
+        if (dt > 0) {
+          momentumVelocity = (clientX - lastMoveX) / dt;
+        }
+        lastMoveX = clientX;
+        lastMoveTime = now;
       }
 
       function dragEnd() {
@@ -923,8 +988,43 @@
     const contactStatus = document.getElementById('contactStatus');
 
     if (contactForm) {
+      const validators = {
+        nombre: (v) => v.trim().length > 0,
+        correo: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()),
+        comentario: (v) => v.trim().length > 0,
+      };
+
+      Object.keys(validators).forEach((id) => {
+        const field = document.getElementById(id);
+        field.addEventListener('input', () => {
+          field.closest('.form-group').classList.remove('invalid');
+        });
+      });
+
+      function validateForm() {
+        let firstInvalid = null;
+        Object.entries(validators).forEach(([id, isValid]) => {
+          const field = document.getElementById(id);
+          const group = field.closest('.form-group');
+          if (!isValid(field.value)) {
+            group.classList.add('invalid');
+            if (!firstInvalid) firstInvalid = field;
+          } else {
+            group.classList.remove('invalid');
+          }
+        });
+        return firstInvalid;
+      }
+
       contactForm.addEventListener('submit', async (e) => {
         e.preventDefault();
+
+        const firstInvalid = validateForm();
+        if (firstInvalid) {
+          firstInvalid.focus();
+          return;
+        }
+
         const submitBtn = contactForm.querySelector('.btn-submit');
         const payload = {
           name: document.getElementById('nombre').value.trim(),
