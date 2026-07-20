@@ -2,183 +2,969 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Portafolio Kelvin Corporán</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kelvin Corporán - Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="Componentes/fontawesome-free-5.9.0-web/css/all.min.css" />
   <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #34E89E;
+      --teal:  #0F3443;
     }
 
-    html, body {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
+    html {
+      scroll-behavior: smooth;
+      scrollbar-width: thin;
+      scrollbar-color: transparent transparent;
+      overflow-x: hidden;
     }
+    html.is-scrolling { scrollbar-color: var(--teal) transparent; }
+
+    html::-webkit-scrollbar { width: 8px; }
+    html::-webkit-scrollbar-track { background: transparent; }
+    html::-webkit-scrollbar-thumb { background: transparent; border-radius: 4px; }
+    html.is-scrolling::-webkit-scrollbar-thumb { background: var(--teal); }
 
     body {
-      background-color: #ffffff;
       font-family: 'Montserrat', sans-serif;
+      color: #333;
+      background: #fff;
+      overflow-x: hidden;
     }
 
-    .wrapper {
-      width: 100vw;
-      height: 100vh;
-      height: 100dvh;
+    /* ─── NAV ─── */
+    nav {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.4rem 3%;
+      background: transparent;
+    }
+
+    .nav-logo img {
+      position: absolute;
+      height: 26px;
+      left: 34%;
+    }
+
+    /* ─── SECCIÓN BASE ─── */
+    section {
       position: relative;
+      background: transparent;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    .hero-wrap,
+    .mision-wrap,
+    .sobre-wrap {
+      position: relative;
+      width: 100%;
+    }
+
+    /* ─── HERO ─── */
+    #hero {
+      aspect-ratio: 1920 / 1080;
+      background: transparent;
       overflow: hidden;
-      display: flex;
-      align-items: center;
+      container-type: inline-size;
     }
 
-
-    /* ── Blobs ── */
-    .blob {
+    .hero-blob {
       position: absolute;
+      top: 0;
+      left: 51%;
+      width: 53%;
+      max-width: 890px;
       pointer-events: none;
-      user-select: none;
+      z-index: 0;
     }
 
-    .blob-top-right {
-      top: -6%;
-      right: -4%;
-      width: 62%;
-    }
-
-    .blob-bottom-left {
-      bottom: -4%;
-      left: -2%;
-      width: 75%;
-    }
-
-    /* ── Content ── */
-    .content {
-      position: relative;
-      z-index: 10;
-      padding: 2rem;
-      margin-left: 14%;
-    }
-
-    .content h1 {
-      font-size: clamp(2rem, 6vw, 5.5rem);
-      font-weight: 800;
-      color: #0F3443;
-      line-height: 1.1;
-      letter-spacing: -0.5px;
-    }
-
-    .content p {
-      margin-top: 0.6rem;
-      font-size: clamp(1rem, 2.5vw, 2.2rem);
-      font-weight: 400;
-      color: #1a4a5c;
-      letter-spacing: 0.2px;
-    }
-
-    /* ── Social icons ── */
-    .social {
+    .hero-circle {
       position: absolute;
-      bottom: 4%;
-      left: 6%;
-      display: flex;
-      align-items: center;
-      gap: clamp(0.6rem, 1.5vw, 1.2rem);
-      z-index: 10;
+      top: 45.46%;
+      left: -1.24%;
+      width: 5%;
+      max-width: 142px;
+      pointer-events: none;
+      z-index: 0;
     }
 
-    .social a {
+    .hero-inner {
+      position: absolute;
+      inset: 0;
+      left: -6%;
+      z-index: 2;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-      color: #ffffff;
+    }
+
+    .hero-content {
+      display: flex;
+      align-items: center;
+      gap: 0%;
+      width: 66%;
+    }
+
+    .hero-text {
+      width: 38.07%;
+    }
+
+    .hero-text h1 {
+      font-size: 2.97cqw;
+      font-weight: 600;
+      color: var(--teal);
+      line-height: 1.2;
+      white-space: nowrap;
+    }
+
+    #greeting {
+      display: inline-block;
+      width: 2.8em;
+      color: var(--green);
+    }
+
+    .hero-text p {
+      margin-top: .5rem;
+      font-size: 1.93cqw;
+      color: #666;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 1.2rem;
+      padding: .80rem 4.2rem;
+      background: var(--teal);
+      color: #fff;
+      border-radius: 30px;
+      font-weight: 300;
+      font-size: 1.25cqw;
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(15, 52, 67, 0.35);
+      transition: opacity .2s, box-shadow .2s;
+    }
+    .btn:hover {
+      opacity: .85;
+      box-shadow: 0 12px 28px rgba(15, 52, 67, 0.45);
+    }
+
+    .hero-img {
+      width: 70%;
+    }
+
+    /* ─── MI MISIÓN ─── */
+    #mision {
+      padding: 8rem 11%;
+
+    }
+
+    .mision-blob-right {
+      position: absolute;
+      left: -3%;
+      bottom: 10%;
+      width: 15%;
+      max-width: 330px;
+      pointer-events: none;
+    }
+
+    .mision-blob-left {
+      position: absolute;
+      left: 73%;
+      top: 20%;
+      width: 8%;
+      max-width: 128px;
+      pointer-events: none;
+    }
+
+    .mision-header {
+      text-align: right;
+      position: relative;
+      z-index: 1;
+    }
+
+    .mision-header h2 {
+      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      font-weight: 600;
+      color: var(--teal);
+    }
+
+    .mision-header p {
+      margin-top: .5rem;
+      font-size: clamp(.85rem, 1.2vw, 1rem);
+      color: #666;
+      max-width: 420px;
+      margin-left: auto;
+      line-height: 1.6;
+    }
+
+    /* ─── CARDS ─── */
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    #mision .cards {
+      align-items: flex-start;
+    }
+
+    #mision .cards .card:last-child {
+      margin-top: 3rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2.6rem 1.8rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,.08);
+      flex: 1 1 220px;
+      max-width: 280px;
+    }
+
+    .card img {
+      width: 60px;
+      margin-bottom: 1.4rem;
+    }
+
+    .card p {
+      font-size: .95rem;
+      color: #555;
+      line-height: 1.65;
+    }
+
+    /* ─── SOBRE MI ─── */
+    #sobre {
+      padding: 8rem 11% 0;
+
+    }
+
+    .sobre-blob-right {
+      position: absolute;
+      right: -4%;
+      top: -56%;
+      width: 15%;
+      max-width: 381px;
+      pointer-events: none;
+    }
+
+    .sobre-blob-left {
+      position: absolute;
+      left: -3%;
+      top: 20%;
+      width: 8%;
+      max-width: 128px;
+      pointer-events: none;
+    }
+
+    #sobre h2 {
+      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      font-weight: 600;
+      color: var(--teal);
+      position: relative;
+      z-index: 1;
+    }
+
+    #sobre > p {
+      margin-top: .5rem;
+      font-size: clamp(.85rem, 1.2vw, 1rem);
+      color: #666;
+      max-width: 520px;
+      line-height: 1.65;
+      position: relative;
+      z-index: 1;
+    }
+
+    #sobre .cards {
+      justify-content: flex-end;
+      align-items: flex-start;
+    }
+
+    #sobre .cards .card:first-child {
+      margin-top: 3rem;
+    }
+
+    /* ─── HABILIDADES ─── */
+    #habilidades {
+      padding: 8rem 4% 4rem;
+      text-align: center;
+      margin-bottom: 3%;
+      margin-top: 24%;
+    }
+
+    #habilidades h2 {
+      position: absolute;
+      top: -300%;
+      left: 43%;
+      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      font-weight: 600;
+      color: var(--teal);
+    }
+
+    .skills-carousel {
+      margin: 2.5rem auto 0;
+      padding: 1rem 0 1.5rem;
+      max-width: 1100px;
+      position: absolute;
+      left: 16%;
+      bottom: 230%;
+      z-index: 2;
+      overflow: hidden;
+      cursor: grab;
+      -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+      mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+    }
+
+    .skills-carousel.dragging {
+      cursor: grabbing;
+    }
+
+    .skills-track {
+      display: flex;
+      width: max-content;
+      gap: clamp(1rem, 2.5vw, 2.2rem);
+      will-change: transform;
+      user-select: none;
+    }
+
+    .skill-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .8rem;
+      flex: 0 0 clamp(110px, 13vw, 160px);
+      height: clamp(50px, 25vw, 220px);
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.09);
+
+    }
+
+    .skill-item img {
+      width: clamp(40px, 4.5vw, 60px);
+      height: clamp(40px, 4.5vw, 60px);
+      object-fit: contain;
+      -webkit-user-drag: none;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    .skill-item span {
+      font-size: clamp(.8rem, 1vw, .95rem);
+      font-weight: 700;
+      color: var(--teal);
+    }
+
+    .dev-blob-wrap {
+      position: relative;
+      max-width: 1400px;
+      margin: -6rem auto 0;
+    }
+
+    .habilidades-blob {
+      display: block;
+      width: 100%;
+    }
+
+    .dev2-img {
+      display: block;
+      margin: 0 auto;
+      width: 55%;
+      max-width: 750px;
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+
+    /* ─── CONTACTAME ─── */
+    #contacto {
+      padding: 8rem 4% 9rem;
+
+    }
+
+    .contacto-blob-left {
+      position: absolute;
+      left: 10%;
+      bottom: 73%;
+      width: 10%;
+      pointer-events: none;
+    }
+
+    .contact-box {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 30px rgba(0,0,0,.1);
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 3.5rem 3rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-box h2 {
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: var(--teal);
+      text-align: center;
+      margin-bottom: 2.2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--teal);
+      margin-bottom: .4rem;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: .7rem 1rem;
+      border: 1.5px solid #ddd;
+      border-radius: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: .9rem;
+      outline: none;
+      transition: border-color .2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--green); }
+
+    .form-group textarea { height: 120px; resize: none; }
+
+    .btn-submit {
+      display: block;
+      width: 100%;
+      padding: .85rem;
+      background: var(--teal);
+      color: #fff;
+      border: none;
+      border-radius: 30px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: opacity .2s;
+    }
+    .btn-submit:hover { opacity: .85; }
+    .btn-submit:disabled { opacity: .6; cursor: not-allowed; }
+
+    .contact-status {
+      font-size: .85rem;
+      margin-bottom: 1rem;
+      min-height: 1.2em;
+    }
+    .contact-status.success { color: #1a9c6d; }
+    .contact-status.error { color: #c0392b; }
+
+    .hp-field {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      position: relative;
+      background: var(--teal);
+      padding: 1.6rem 4%;
+      overflow: hidden;
+      z-index: 100;
+      box-shadow: 0 -4px 20px rgba(0,0,0,.15);
+    }
+
+    .footer-inner {
+      max-width: 1600px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 29rem;
+      position: relative;
+    }
+
+    .footer-blob {
+      position: absolute;
+      right: -2%;
+      bottom: 85px;
+      width: 17%;
+      max-width: 300px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    footer p {
+      font-size: .95rem;
+      color: #fff;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: .8rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .footer-social a {
+      color: #fff;
+      font-size: 1.2rem;
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: rgba(255,255,255,.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity .2s;
       text-decoration: none;
     }
+    .footer-social a:hover { opacity: .7; }
 
-    .social a:hover {
-      opacity: 0.75;
-      transform: scale(1.1);
-    }
-
-    .social a i {
-      font-size: clamp(1.6rem, 3.5vw, 3rem);
-    }
-
-    /* ── Tablet (≤ 768px) ── */
+    /* ─── RESPONSIVE ─── */
     @media (max-width: 768px) {
-      .blob-top-right {
-        width: 75%;
-        top: -4%;
-        right: -4%;
+      nav { padding: 1rem 5%; }
+      .nav-logo img { left: 5%; }
+
+      /* HERO: desktop uses an absolutely-positioned, flex-centered hero-inner
+         sized via container-query units. On mobile we drop back to normal
+         document flow so #hero's height comes from its own content. */
+      #hero { aspect-ratio: auto; padding-bottom: 3rem; }
+      .hero-inner { position: static; left: auto; display: block; }
+      .hero-content { display: block; width: 100%; }
+      .hero-text { width: 100%; padding: 8rem 5% 0; text-align: center; }
+      .hero-text h1 { font-size: 5.5vw; white-space: normal; }
+      #greeting { width: 3em; }
+      .hero-text p { font-size: 4vw; }
+      .btn { font-size: 4vw; padding: .8rem 2.4rem; }
+      .hero-img { display: none; }
+      .hero-blob { left: auto; right: -26%; width: 90%; top: -3%; }
+      .hero-circle { top: auto; bottom: 25%; left: -32%; width: 6%; }
+
+      #mision { padding: 2.5rem 11% 8rem; }
+      #sobre { padding: 2.5rem 11% 0; }
+      .mision-header { text-align: left; }
+      .mision-header p { margin-left: 0; }
+      .mision-blob-left { left: 91%; top: 12%; width: 40%; max-width: 140px; }
+      .mision-blob-right { left: -3%; bottom: 23%; width: 38%; max-width: 1000px; }
+      .card { max-width: 100%; }
+      #sobre .cards { justify-content: flex-start; }
+      #sobre .cards .card:first-child { margin-top: 0; }
+      #sobre .card img { display: block; margin-left: auto; margin-right: 0; }
+      #mision .cards .card:last-child { margin-top: 0; }
+      .sobre-blob-right { top: 4%; right: -12%; width: 32%; max-width: 150px; }
+
+      /* HABILIDADES: desktop relies on large absolute offsets (h2 at
+         top:-300%, carousel at bottom:230%, image at bottom:0 within a
+         negative-margin wrapper) tuned for a specific desktop aspect ratio —
+         none of that holds up on mobile, so it's reset to plain flow here. */
+      #habilidades { margin-top: 0; margin-bottom: 0; padding: 4rem 4%; }
+      #habilidades h2 { position: static; top: auto; left: auto; margin-bottom: 1.5rem; }
+      .skills-carousel { position: static; left: auto; bottom: auto; margin: 0 auto; z-index: 1; }
+      .skill-item { height: clamp(90px, 32vw, 220px); }
+      .dev-blob-wrap { position: static; margin: -3rem auto 0; z-index: 0; }
+      .habilidades-blob { display: none; }
+      .dev2-img {
+        position: static;
+        transform: none;
+        display: block;
+        width: 90%;
+        max-width: 550px;
+        margin: 0 auto;
       }
 
-      .blob-bottom-left {
-        width: 85%;
-        left: -3%;
-        bottom: -3%;
-      }
+      .contacto-blob-left { width: 16%; bottom: 88%; }
+      #contacto { padding: 4rem 4% 2.5rem; }
 
-      .content { margin-left: 8%; }
-      .social { left: 8%; bottom: 5%; }
-    }
-
-    /* ── Mobile (≤ 480px) ── */
-    @media (max-width: 480px) {
-      .blob-top-right {
-        width: 92%;
-        top: -8%;
-        right: -2%;
-      }
-
-      .blob-bottom-left {
-        width: 115%;
-        left: -2%;
-        bottom: -2%;
-      }
-
-      .content {
-        margin-left: 6%;
-        margin-top: -4vh;
-      }
-
-      .social {
-        left: 5%;
-        bottom: 3%;
-        gap: 1rem;
-      }
-
-      .social a i { font-size: 1.8rem; }
+      footer { padding: 1.2rem 5%; }
+      .footer-inner { flex-direction: column; gap: .8rem; text-align: center; }
+      .footer-blob { display: none; }
     }
   </style>
 </head>
 <body>
-  <div class="wrapper">
 
-    <img class="blob blob-top-right" src="Componentes/baloom.svg" alt="" aria-hidden="true"/>
-    <img class="blob blob-bottom-left" src="Componentes/baloom2.svg" alt="" aria-hidden="true"/>
-
-    <div class="content">
-      <h1>Muy Pronto..</h1>
-      <p>Portafolio Kelvin Corporán</p>
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">
+      <img src="Componentes/main.svg" alt="Logo" />
     </div>
+  </nav>
 
-    <div class="social">
-      <a href="https://github.com/kcorporangomez" target="_blank" rel="noopener" aria-label="GitHub">
-        <i class="fab fa-github"></i>
-      </a>
-      <a href="https://www.instagram.com/kelvincorporangomez" target="_blank" rel="noopener" aria-label="Instagram">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <a href="https://www.linkedin.com/in/kcorporangomez" target="_blank" rel="noopener" aria-label="LinkedIn">
-        <i class="fab fa-linkedin"></i>
-      </a>
-    </div>
-
+  <!-- HERO -->
+  <div class="hero-wrap">
+    <img class="hero-blob"   src="Componentes/baloom.svg"   alt="" aria-hidden="true" />
+    <img class="hero-circle" src="Componentes/baloomp0.svg" alt="" aria-hidden="true" />
+    <section id="hero">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1><span id="greeting">Hey..</span>Soy Kelvin Corporán</h1>
+            <p>Desarrollador Fullstack</p>
+            <a href="#contacto" class="btn">Contactame</a>
+          </div>
+          <img class="hero-img" src="Componentes/Developer.svg" alt="Kelvin Corporán desarrollando" />
+        </div>
+      </div>
+    </section>
   </div>
+
+  <!-- MI MISIÓN -->
+  <div class="mision-wrap">
+    <img class="mision-blob-right" src="Componentes/baloom3.svg" alt="" aria-hidden="true" />
+    <img class="mision-blob-left" src="Componentes/baloomp.svg" alt="" aria-hidden="true" />
+    <section id="mision">
+      <div class="mision-header">
+        <h2>Mi Misión</h2>
+        <p>Lograr grandes cosas en el área de la ingeniería de software y destacar en lo que hago</p>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <img src="Componentes/icons/website.png" alt="Web" />
+          <p>Creación de sitios web modernos, rápidos y optimizados, siguiendo las últimas tendencias y estándares de la industria.</p>
+        </div>
+        <div class="card">
+          <img src="Componentes/icons/software.png" alt="Software" />
+          <p>Construir aplicaciones confiables tomando en cuenta las fases de implementación</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- SOBRE MI -->
+  <div class="sobre-wrap">
+    <img class="sobre-blob-right" src="Componentes/baloom4.svg" alt="" aria-hidden="true" />
+    <section id="sobre">
+      <img class="sobre-blob-left" src="Componentes/baloomp2.svg" alt="" aria-hidden="true" />
+
+      <h2>Sobre Mi</h2>
+      <p>Dentro del área hace +8 años y desde entonces he ido adquiriendo lo necesario para llegar a hacer desarrollos de calidad</p>
+
+      <div class="cards">
+        <div class="card">
+          <img src="Componentes/icons/website.png" alt="Web" />
+          <p>Transformando ideas en soluciones tecnológicas estables y escalables.</p>
+        </div>
+        <div class="card">
+          <img src="Componentes/icons/software.png" alt="Software" />
+          <p>Me motiva la automatización de procesos y el diseño de sistemas eficientes para optimizar flujos de trabajo.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- HABILIDADES -->
+  <section id="habilidades">
+    <h2>Habilidades</h2>
+
+    <div class="skills-carousel">
+      <div class="skills-track" id="skillsTrack">
+        <div class="skill-item">
+          <img src="Componentes/html5.png" alt="HTML5" />
+          <span>HTML</span>
+        </div>
+        <div class="skill-item">
+          <img src="Componentes/css-3.png" alt="CSS" />
+          <span>CSS</span>
+        </div>
+        <div class="skill-item">
+          <img src="Componentes/sass.svg" alt="SASS" />
+          <span>SASS</span>
+        </div>
+        <div class="skill-item">
+          <img src="Componentes/bootstrap-7-1175254.png" alt="Bootstrap" />
+          <span>BT</span>
+        </div>
+        <div class="skill-item">
+          <img src="Componentes/Git-Icon-1788C.png" alt="Git" />
+          <span>GIT</span>
+        </div>
+        <div class="skill-item">
+          <img src="Componentes/js.png" alt="JavaScript" />
+          <span>JS</span>
+        </div>
+        <div class="skill-item">
+          <img src="Componentes/nextjs.svg" alt="Next.js" />
+          <span>NEXT</span>
+        </div>
+        <div class="skill-item">
+          <img src="Componentes/jira.svg" alt="Jira" />
+          <span>JIRA</span>
+        </div>
+        <div class="skill-item">
+          <img src="Componentes/confluence.svg" alt="Confluence" />
+          <span>CONFLUENCE</span>
+        </div>
+        <div class="skill-item">
+          <img src="Componentes/BitBucket.svg" alt="Bitbucket" />
+          <span>BITBUCKET</span>
+        </div>
+        <div class="skill-item">
+          <img src="Componentes/nodejs.svg" alt="Node.js" />
+          <span>NODE</span>
+        </div>
+        <div class="skill-item">
+          <img src="Componentes/postgresql.svg" alt="PostgreSQL" />
+          <span>POSTGRESQL</span>
+        </div>
+        <div class="skill-item">
+          <img src="Componentes/mysql-icon-light.svg" alt="MySQL" />
+          <span>MYSQL</span>
+        </div>
+        <div class="skill-item">
+          <img src="Componentes/sql-server.svg" alt="SQL Server" />
+          <span>SQL SERVER</span>
+        </div>
+        <div class="skill-item">
+          <img src="Componentes/supabase.svg" alt="Supabase" />
+          <span>SUPABASE</span>
+        </div>
+        <div class="skill-item">
+          <img src="Componentes/json.svg" alt="JSON" />
+          <span>JSON</span>
+        </div>
+        <div class="skill-item">
+          <img src="Componentes/vscode.svg" alt="VS Code" />
+          <span>VS CODE</span>
+        </div>
+        <div class="skill-item">
+          <img src="Componentes/tailwindcss.svg" alt="Tailwind CSS" />
+          <span>TAILWIND</span>
+        </div>
+        <div class="skill-item">
+          <img src="Componentes/GitHub.svg" alt="GitHub" />
+          <span>GITHUB</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="dev-blob-wrap">
+      <img class="dev2-img" src="Componentes/developer2.svg" alt="Desarrollador" />
+    </div>
+  </section>
+
+  <!-- CONTACTAME -->
+  <section id="contacto">
+    <img class="contacto-blob-left" src="Componentes/baloomp2.svg" alt="" aria-hidden="true" />
+
+    <div class="contact-box">
+      <h2>Contactame</h2>
+      <form id="contactForm">
+        <div class="form-group">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" name="nombre" required maxlength="100" />
+        </div>
+        <div class="form-group">
+          <label for="correo">Correo</label>
+          <input type="email" id="correo" name="correo" required maxlength="254" />
+        </div>
+        <div class="form-group">
+          <label for="comentario">Comentario</label>
+          <textarea id="comentario" name="comentario" required maxlength="3000"></textarea>
+        </div>
+        <!-- Honeypot: hidden from real visitors, bots that auto-fill every field trip it. -->
+        <div class="hp-field" aria-hidden="true">
+          <label for="website">Website</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+        </div>
+        <p id="contactStatus" class="contact-status" role="status" aria-live="polite"></p>
+        <button type="submit" class="btn-submit">Enviar</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <img class="footer-blob" src="Componentes/baloomfooter.svg" alt="" aria-hidden="true" />
+    <div class="footer-inner">
+      <p>&copy; 2026 - Kelvin Corporán</p>
+      <div class="footer-social">
+        <a href="https://github.com/kcorporangomez" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://www.instagram.com/kelvincorporangomez" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/kcorporangomez" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
+  <script>
+    const greetingEl = document.getElementById('greeting');
+    if (greetingEl && typeof anime !== 'undefined') {
+      const greetings = ['Hey..', 'Hello', 'Hola.'];
+      let greetingIndex = 0;
+      setInterval(() => {
+        anime({
+          targets: greetingEl,
+          translateY: [0, -12],
+          opacity: [1, 0],
+          duration: 300,
+          easing: 'easeInQuad',
+          complete: () => {
+            greetingIndex = (greetingIndex + 1) % greetings.length;
+            greetingEl.textContent = greetings[greetingIndex];
+            anime({
+              targets: greetingEl,
+              translateY: [12, 0],
+              opacity: [0, 1],
+              duration: 300,
+              easing: 'easeOutQuad',
+            });
+          },
+        });
+      }, 2200);
+    }
+
+    let scrollHideTimer;
+    window.addEventListener('scroll', () => {
+      document.documentElement.classList.add('is-scrolling');
+      clearTimeout(scrollHideTimer);
+      scrollHideTimer = setTimeout(() => {
+        document.documentElement.classList.remove('is-scrolling');
+      }, 800);
+    }, { passive: true });
+
+    const skillsTrack = document.getElementById('skillsTrack');
+    const skillsCarousel = document.querySelector('.skills-carousel');
+    if (skillsTrack && skillsCarousel && typeof anime !== 'undefined') {
+      skillsTrack.innerHTML += skillsTrack.innerHTML;
+
+      const speed = 40; // px per second
+      let distance = skillsTrack.scrollWidth / 2;
+      let x = 0;
+      let lastTime = null;
+      let rafId;
+      let isDragging = false;
+      let dragStartX = 0;
+      let dragStartTranslate = 0;
+
+      const normalize = (val) => {
+        let v = val % distance;
+        if (v > 0) v -= distance;
+        return v;
+      };
+
+      function tick(now) {
+        if (!isDragging) {
+          if (lastTime !== null) {
+            x = normalize(x - (speed * (now - lastTime)) / 1000);
+          }
+          anime.set(skillsTrack, { translateX: x });
+        }
+        lastTime = now;
+        rafId = requestAnimationFrame(tick);
+      }
+
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(tick);
+
+      const getClientX = (e) => (e.touches ? e.touches[0].clientX : e.clientX);
+
+      function dragStart(e) {
+        isDragging = true;
+        dragStartX = getClientX(e);
+        dragStartTranslate = x;
+        skillsCarousel.classList.add('dragging');
+      }
+
+      function dragMove(e) {
+        if (!isDragging) return;
+        x = normalize(dragStartTranslate + (getClientX(e) - dragStartX));
+        anime.set(skillsTrack, { translateX: x });
+      }
+
+      function dragEnd() {
+        isDragging = false;
+        skillsCarousel.classList.remove('dragging');
+      }
+
+      skillsCarousel.addEventListener('dragstart', (e) => e.preventDefault());
+      skillsCarousel.addEventListener('mousedown', dragStart);
+      window.addEventListener('mousemove', dragMove);
+      window.addEventListener('mouseup', dragEnd);
+      skillsCarousel.addEventListener('touchstart', dragStart, { passive: true });
+      window.addEventListener('touchmove', dragMove, { passive: true });
+      window.addEventListener('touchend', dragEnd);
+
+      let skillsResizeTimer;
+      window.addEventListener('resize', () => {
+        clearTimeout(skillsResizeTimer);
+        skillsResizeTimer = setTimeout(() => {
+          distance = skillsTrack.scrollWidth / 2;
+        }, 200);
+      });
+    }
+
+    const CONTACT_ENDPOINT = 'https://nbycdrekbsxfuwrujorl.supabase.co/functions/v1/contact-form';
+    const contactForm = document.getElementById('contactForm');
+    const contactStatus = document.getElementById('contactStatus');
+
+    if (contactForm) {
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const submitBtn = contactForm.querySelector('.btn-submit');
+        const payload = {
+          name: document.getElementById('nombre').value.trim(),
+          email: document.getElementById('correo').value.trim(),
+          comment: document.getElementById('comentario').value.trim(),
+          website: document.getElementById('website').value,
+        };
+
+        contactStatus.textContent = '';
+        contactStatus.className = 'contact-status';
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Enviando...';
+
+        try {
+          const res = await fetch(CONTACT_ENDPOINT, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+          const data = await res.json().catch(() => ({}));
+
+          if (!res.ok) {
+            throw new Error(data.error || 'No se pudo enviar el mensaje');
+          }
+
+          contactStatus.textContent = '¡Mensaje enviado! Te responderé pronto.';
+          contactStatus.className = 'contact-status success';
+          contactForm.reset();
+        } catch (err) {
+          const friendlyMessage = err instanceof TypeError
+            ? 'No se pudo conectar. Revisa tu conexión a internet e intenta de nuevo.'
+            : (err.message || 'Ocurrió un error, intenta de nuevo.');
+          contactStatus.textContent = friendlyMessage;
+          contactStatus.className = 'contact-status error';
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Enviar';
+        }
+      });
+    }
+  </script>
 </body>
 </html>
