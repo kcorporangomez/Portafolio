@@ -17,7 +17,7 @@ const SOCIAL_ICONS = {
   linkedin: LinkedinIcon,
 } as const
 
-const SERVICES = ['Frontend', 'Backend', 'APIs REST', 'Bases de datos', 'Cloud', 'Automatización']
+const SERVICES = ['Frontend', 'Backend', 'APIs REST', 'Bases de datos', 'Automatización']
 const SERVICE_ROTATIONS = ['-rotate-3', 'rotate-2', '-rotate-1', 'rotate-3', '-rotate-2', 'rotate-1']
 
 export function Hero() {
@@ -31,10 +31,10 @@ export function Hero() {
       >
         {/* Row 1: intro + avatar */}
         <div className="grid grid-cols-1 gap-4 md:grid-cols-12">
-          <BentoCell className="flex flex-col justify-center md:col-span-8">
+          <BentoCell className="@container flex flex-col justify-center md:col-span-8">
             <h1
               aria-label="Hola, soy Kelvin Corporán"
-              className="text-[clamp(1.5rem,6vw,4rem)] font-extrabold leading-[1.05] tracking-tight text-teal"
+              className="text-[clamp(1.5rem,8cqw,4rem)] font-extrabold leading-[1.05] tracking-tight text-teal"
             >
               <span className="inline-block align-baseline">
                 <RotatingGreeting />
@@ -48,7 +48,7 @@ export function Hero() {
             </div>
           </BentoCell>
 
-          <BentoCell tone="dark" className="hidden aspect-square items-center justify-center md:col-span-4 md:flex">
+          <BentoCell tone="dark" className="hidden items-center justify-center md:col-span-4 md:flex">
             <span className="text-4xl font-semibold tracking-tight">KC</span>
           </BentoCell>
         </div>
