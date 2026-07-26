@@ -47,7 +47,7 @@ export function SkillsMarquee() {
 
   if (prefersReducedMotion) {
     return (
-      <div className="overflow-x-auto pb-2">
+      <div className="overflow-x-auto py-4">
         <div className="flex w-max gap-[clamp(1rem,2.5vw,2.2rem)] px-6">
           {SKILLS.map((skill) => (
             <SkillTile key={skill.label} skill={skill} />
@@ -84,7 +84,7 @@ export function SkillsMarquee() {
 
   return (
     <div
-      className="marquee-mask relative cursor-grab overflow-hidden"
+      className="marquee-mask relative cursor-grab overflow-hidden py-4"
       style={{ touchAction: 'pan-y' }}
       onPointerDown={onPointerDown}
       onPointerMove={onPointerMove}
@@ -116,7 +116,7 @@ function SkillTile({ skill, ariaHidden }: { skill: Skill; ariaHidden?: boolean }
         src={skill.icon}
         alt={ariaHidden ? '' : skill.alt}
         draggable={false}
-        className="h-9 w-9 object-contain grayscale transition-all duration-300 hover:grayscale-0"
+        className="h-9 w-9 object-contain"
       />
       <span className="text-[10px] font-semibold tracking-wide text-muted">{skill.label}</span>
     </motion.div>

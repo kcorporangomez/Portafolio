@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { EASE_IN_QUAD, EASE_OUT_QUAD } from '@/lib/motion'
 
-const GREETINGS = ['Hey..', 'Hello', 'Hola.'] as const
+const GREETINGS = ['Hey', 'Hello', 'Hola'] as const
 const ROTATE_INTERVAL_MS = 2200
 const FIRST_SWAP_DELAY_MS = 1400
 

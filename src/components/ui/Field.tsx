@@ -12,6 +12,7 @@ interface FieldProps {
   tooltip?: string
   maxLength?: number
   required?: boolean
+  labelClassName?: string
 }
 
 export function Field({
@@ -25,6 +26,7 @@ export function Field({
   tooltip,
   maxLength,
   required,
+  labelClassName = 'text-teal',
 }: FieldProps) {
   const baseClasses = cn(
     'w-full rounded-field border bg-white px-4 py-3 text-[16px] text-ink outline-none transition-colors',
@@ -33,7 +35,7 @@ export function Field({
 
   return (
     <div className="relative">
-      <label htmlFor={id} className="mb-1.5 block text-sm font-semibold text-teal">
+      <label htmlFor={id} className={cn('mb-1.5 block text-sm font-semibold', labelClassName)}>
         {label}
       </label>
 

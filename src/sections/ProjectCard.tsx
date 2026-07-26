@@ -2,15 +2,16 @@ import { motion } from 'framer-motion'
 import { fadeUp } from '@/lib/motion'
 import { Tag } from '@/components/ui/Tag'
 import { ArrowUpRight } from '@/components/icons/ArrowUpRight'
+import { cn } from '@/lib/cn'
 import type { Project } from '@/data/projects'
-import accentBlob from '@/assets/blobs/hero-accent.svg'
 
 interface ProjectCardProps {
   project: Project
   index: number
+  className?: string
 }
 
-export function ProjectCard({ project, index }: ProjectCardProps) {
+export function ProjectCard({ project, index, className }: ProjectCardProps) {
   const domain = new URL(project.href).hostname.replace('www.', '')
 
   return (
@@ -21,15 +22,13 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
       rel="noopener noreferrer"
       whileHover={{ y: -8 }}
       transition={{ type: 'spring', stiffness: 260, damping: 24 }}
-      className="group relative block cursor-pointer overflow-hidden rounded-card border border-white/10 bg-white/[0.03]"
+      className={cn('group relative flex h-full flex-col overflow-hidden rounded-card cursor-pointer', className)}
     >
-      <div className="relative aspect-[16/10] overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-teal-soft to-green" />
-        <img
-          src={accentBlob}
-          alt=""
+      <div className="relative aspect-[16/10] shrink-0 overflow-hidden">
+        <div className="absolute inset-0 bg-linear-to-br from-teal-soft to-green" />
+        <div
           aria-hidden="true"
-          className="absolute -right-10 -top-10 w-2/3 opacity-30 transition-transform duration-500 group-hover:scale-110"
+          className="absolute -right-16 -top-16 h-56 w-56 rounded-full border-[16px] border-white/10 transition-transform duration-500 group-hover:scale-110"
         />
         <div className="absolute inset-x-4 top-4 flex items-center gap-2 rounded-field bg-black/20 px-3 py-2 backdrop-blur-sm">
           <span className="h-2 w-2 rounded-full bg-white/40" />
@@ -39,12 +38,12 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
         </div>
       </div>
 
-      <div className="relative overflow-hidden p-6 md:p-8">
-        <span className="pointer-events-none absolute -top-3 right-4 select-none text-[5rem] font-extrabold leading-none text-white/5 md:-top-5 md:text-[6.5rem]">
+      <div className="relative flex flex-1 flex-col overflow-hidden bg-teal p-6 md:p-8">
+        <span className="pointer-events-none absolute -top-3 right-4 select-none text-[5rem] font-semibold leading-none text-white/5 md:-top-5 md:text-[6.5rem]">
           {String(index + 1).padStart(2, '0')}
         </span>
 
-        <div className="relative">
+        <div className="relative flex flex-1 flex-col">
           <h3 className="text-xl font-bold text-white md:text-2xl">{project.title}</h3>
           <p className="mt-3 text-sm leading-relaxed text-white/70 md:text-base">{project.description}</p>
 

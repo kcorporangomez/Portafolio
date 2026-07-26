@@ -1,78 +1,122 @@
 import { motion } from 'framer-motion'
-import { EASE, fadeUp, staggerContainer } from '@/lib/motion'
-import { Blob } from '@/components/Blob'
-import { ButtonLink } from '@/components/ui/Button'
+import { staggerContainer } from '@/lib/motion'
+import { BentoCell } from '@/components/ui/BentoCell'
+import { GithubIcon } from '@/components/icons/GithubIcon'
+import { InstagramIcon } from '@/components/icons/InstagramIcon'
+import { LinkedinIcon } from '@/components/icons/LinkedinIcon'
+import { ArrowUpRight } from '@/components/icons/ArrowUpRight'
 import { RotatingGreeting } from './RotatingGreeting'
-import heroBlob from '@/assets/blobs/hero-blob.svg'
-import heroAccent from '@/assets/blobs/hero-accent.svg'
-import developerHero from '@/assets/illustrations/developer-hero.svg'
+import { SkillsMarquee } from './SkillsMarquee'
+import { SOCIALS } from '@/data/socials'
+import { PROJECTS } from '@/data/projects'
+
+const SOCIAL_ICONS = {
+  github: GithubIcon,
+  instagram: InstagramIcon,
+  linkedin: LinkedinIcon,
+} as const
+
+const SERVICES = ['Frontend', 'Backend', 'APIs REST', 'Bases de datos', 'Cloud', 'Automatización']
+const SERVICE_ROTATIONS = ['-rotate-3', 'rotate-2', '-rotate-1', 'rotate-3', '-rotate-2', 'rotate-1']
 
 export function Hero() {
   return (
-    <section
-      id="hero"
-      className="relative overflow-hidden pt-32 pb-16 md:flex md:min-h-[100dvh] md:items-center md:pt-24 md:pb-0"
-    >
-      <Blob
-        src={heroBlob}
-        className="absolute -top-16 right-[-20%] w-[85%] max-w-[890px] md:-top-8 md:right-[-4%] md:w-[52%]"
-        parallax={90}
-        rotate={4}
-      />
-      <Blob
-        src={heroAccent}
-        className="absolute left-[-4%] top-[46%] hidden w-[6%] max-w-[142px] md:block"
-        parallax={30}
-      />
+    <section id="hero" className="relative pb-2 pt-3 md:pt-4">
+      <motion.div
+        variants={staggerContainer(0.06, 0.1)}
+        initial="hidden"
+        animate="visible"
+        className="mx-auto flex max-w-350 flex-col gap-4 px-6 md:px-10"
+      >
+        {/* Row 1: intro + avatar */}
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-12">
+          <BentoCell className="flex flex-col justify-center md:col-span-8">
+            <h1
+              aria-label="Hola, soy Kelvin Corporán"
+              className="text-[clamp(2rem,5vw,4rem)] font-extrabold leading-[1.05] tracking-tight text-teal"
+            >
+              <span className="inline-block align-baseline">
+                <RotatingGreeting />
+              </span>{' '}
+              <span className="inline-block">Soy Kelvin Corporán</span>
+            </h1>
+            <p className="mt-4 text-lg font-semibold text-muted">Desarrollador Fullstack</p>
+          </BentoCell>
 
-      <div className="relative z-10 mx-auto grid w-full max-w-[1600px] gap-10 px-6 md:grid-cols-2 md:items-center md:gap-6 md:px-10">
-        <motion.div
-          variants={staggerContainer(0.08, 0.15)}
-          initial="hidden"
-          animate="visible"
-          className="max-w-xl"
-        >
-          <motion.p
-            variants={fadeUp}
-            className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-teal/60"
-          >
-            +8 años construyendo software
-          </motion.p>
+          <BentoCell tone="dark" className="hidden aspect-square items-center justify-center md:col-span-4 md:flex">
+            <span className="text-4xl font-semibold tracking-tight">KC</span>
+          </BentoCell>
+        </div>
 
-          <h1
-            aria-label="Hola, soy Kelvin Corporán"
-            className="text-[clamp(2.25rem,5vw,3.75rem)] font-extrabold leading-[1.05] text-teal"
-          >
-            <motion.span variants={fadeUp} className="inline-block overflow-hidden align-baseline">
-              <RotatingGreeting />
-            </motion.span>{' '}
-            <motion.span variants={fadeUp} className="inline-block">
-              Soy Kelvin Corporán
-            </motion.span>
-          </h1>
+        {/* Row 2: social icons */}
+        <div className="grid grid-cols-3 gap-4">
+          {SOCIALS.map((social) => {
+            const Icon = SOCIAL_ICONS[social.icon]
+            return (
+              <BentoCell
+                key={social.href}
+                as="a"
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                hover
+                className="flex h-20 items-center justify-center p-0! md:h-24"
+              >
+                <span className="sr-only">{social.label}</span>
+                <Icon className="h-6 w-6 text-teal md:h-7 md:w-7" aria-hidden="true" />
+              </BentoCell>
+            )
+          })}
+        </div>
 
-          <motion.p variants={fadeUp} className="mt-5 text-lg font-semibold text-muted md:text-xl">
-            Desarrollador Fullstack
-          </motion.p>
+        {/* Row 3: tools */}
+        <BentoCell className="order-2 flex flex-col md:order-0">
+          <p className="text-xs uppercase tracking-wide text-teal/80">Herramientas</p>
+          <div className="-mx-6 mt-6 flex items-center overflow-hidden md:-mx-8">
+            <SkillsMarquee />
+          </div>
+        </BentoCell>
 
-          <motion.div variants={fadeUp} className="mt-8">
-            <ButtonLink href="#contacto">Contáctame</ButtonLink>
-          </motion.div>
-        </motion.div>
+        {/* Row 4: recent projects + services */}
+        <div className="order-1 grid grid-cols-1 gap-4 md:order-0 md:grid-cols-2">
+          <BentoCell as="a" href="#proyectos" hover>
+            <div className="flex items-center justify-between">
+              <p className="text-xs uppercase tracking-wide text-teal/80">Proyectos recientes</p>
+              <ArrowUpRight className="h-4 w-4 text-teal" />
+            </div>
 
-        <motion.div
-          initial={{ opacity: 0, x: 24 }}
-          animate={{ opacity: 1, x: 0, transition: { duration: 0.9, ease: EASE, delay: 0.5 } }}
-          className="relative mx-auto w-full max-w-sm md:max-w-none"
-        >
-          <img
-            src={developerHero}
-            alt="Kelvin Corporán desarrollando"
-            className="h-auto w-full"
-            fetchPriority="high"
-          />
-        </motion.div>
-      </div>
+            <div className="relative mt-6 h-24">
+              {PROJECTS.map((project, i) => (
+                <div
+                  key={project.slug}
+                  className="absolute top-0 flex h-20 w-28 items-end rounded-lg bg-linear-to-br from-teal-soft to-green p-2 shadow-tile"
+                  style={{
+                    left: `${i * 52}px`,
+                    top: `${i * 8}px`,
+                    transform: `rotate(${i % 2 === 0 ? -6 : 4}deg)`,
+                  }}
+                >
+                  <span className="truncate text-[10px] font-medium text-white/80">{project.title}</span>
+                </div>
+              ))}
+            </div>
+          </BentoCell>
+
+          <BentoCell>
+            <p className="text-xs uppercase tracking-wide text-teal/80">Servicios</p>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {SERVICES.map((service, i) => (
+                <span
+                  key={service}
+                  className={`${SERVICE_ROTATIONS[i % SERVICE_ROTATIONS.length]} rounded-full border border-border px-3 py-1.5 text-xs font-medium text-ink`}
+                >
+                  {service}
+                </span>
+              ))}
+            </div>
+          </BentoCell>
+        </div>
+      </motion.div>
     </section>
   )
 }

@@ -14,6 +14,7 @@
   --color-muted-soft:  #555555;
   --color-danger:      #C0392B;
   --color-success:     #1A9C6D;
+  --color-border:      rgb(15 52 67 / 0.1);
 
   --font-sans: "Montserrat Variable", "Montserrat", ui-sans-serif, system-ui, sans-serif;
 

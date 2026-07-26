@@ -1,49 +1,45 @@
 import { motion } from 'framer-motion'
 import { staggerContainer, viewportOnce } from '@/lib/motion'
-import { SectionHeading } from '@/components/ui/SectionHeading'
-import { Card } from '@/components/ui/Card'
-import { Blob } from '@/components/Blob'
-import aboutBlob from '@/assets/blobs/about-blob.svg'
-import accentSmall from '@/assets/blobs/accent-small.svg'
-import websiteIcon from '@/assets/icons/website.png'
-import softwareIcon from '@/assets/icons/software.png'
+import { BentoCell } from '@/components/ui/BentoCell'
+import { TargetIcon } from '@/components/icons/TargetIcon'
+import { BoltIcon } from '@/components/icons/BoltIcon'
 
 export function About() {
   return (
-    <section id="sobre" className="relative scroll-mt-24 overflow-hidden py-24 md:py-32">
-      <Blob
-        src={aboutBlob}
-        className="absolute -left-[14%] top-10 w-[50%] max-w-[480px] opacity-60"
-        parallax={45}
-      />
-      <Blob
-        src={accentSmall}
-        className="absolute bottom-0 right-[-3%] hidden w-[6%] max-w-[110px] md:block"
-        parallax={20}
-      />
-
+    <section id="sobre" className="relative scroll-mt-24 py-2">
       <motion.div
-        variants={staggerContainer(0.12)}
+        variants={staggerContainer(0.1)}
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
-        className="relative z-10 mx-auto max-w-[1600px] px-6 md:px-10"
+        className="mx-auto grid max-w-350 grid-cols-1 gap-4 px-6 md:grid-cols-12 md:grid-rows-2 md:px-10"
       >
-        <SectionHeading
-          eyebrow="Quién soy"
-          title="Sobre Mí"
-          lede="Llevo +8 años en el área, y en ese camino he construido la experiencia necesaria para entregar desarrollos de calidad."
-        />
+        <BentoCell
+          tone="dark"
+          className="flex flex-col justify-center md:col-start-9 md:col-span-4 md:row-start-1 md:row-span-2"
+        >
+          <p className="text-xs uppercase tracking-wide text-green-soft">Quién soy</p>
+          <h2 className="mt-3 text-3xl font-extrabold tracking-tight">Sobre Mí</h2>
+          <p className="mt-4 text-sm leading-relaxed text-white/70">
+            Llevo +8 años en el área, y en ese camino he construido la experiencia necesaria para entregar
+            desarrollos de calidad.
+          </p>
+        </BentoCell>
 
-        <div className="mt-12 grid gap-6 md:mt-16 md:grid-cols-2">
-          <Card icon={websiteIcon} className="md:mt-10">
+        <BentoCell hover className="md:col-start-1 md:col-span-8 md:row-start-1">
+          <TargetIcon className="mb-4 h-8 w-8 text-teal" />
+          <p className="text-sm leading-relaxed text-muted-soft md:text-base">
             Transformo ideas en soluciones tecnológicas estables y escalables.
-          </Card>
-          <Card icon={softwareIcon}>
+          </p>
+        </BentoCell>
+
+        <BentoCell hover className="md:col-start-1 md:col-span-8 md:row-start-2">
+          <BoltIcon className="mb-4 h-8 w-8 text-teal" />
+          <p className="text-sm leading-relaxed text-muted-soft md:text-base">
             Me mueve la automatización de procesos y el diseño de sistemas eficientes que optimizan flujos de
             trabajo.
-          </Card>
-        </div>
+          </p>
+        </BentoCell>
       </motion.div>
     </section>
   )
