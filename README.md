@@ -1,28 +1,46 @@
 # Portafolio Kelvin Corporán
 
-Landing page tipo "Coming Soon" para anunciar mi portafolio personal.
+Sitio personal de Kelvin Corporán — desarrollador fullstack. Landing de una sola página con misión, sobre mí, habilidades, proyectos y contacto.
 
-## Vista previa
+En vivo: [kelvincorporan.com](https://kelvincorporan.com)
 
-Diseño minimalista con fondos orgánicos en degradado verde, tipografía Montserrat e íconos de redes sociales.
+## Stack
 
-## Tecnologías
-
-- HTML5
-- CSS3 (responsive, clamp, flexbox)
-- [Montserrat](https://fonts.google.com/specimen/Montserrat) — Google Fonts
-- [Font Awesome 5.9](https://fontawesome.com) — íconos sociales (local)
+- [React 19](https://react.dev) + [TypeScript](https://www.typescriptlang.org)
+- [Vite](https://vite.dev)
+- [Tailwind CSS v4](https://tailwindcss.com)
+- [Framer Motion](https://motion.dev)
 
 ## Estructura
 
 ```
-Portafolio/
-├── index.html
-└── Componentes/
-    ├── baloom.svg           # Blob superior derecho
-    ├── baloom2.svg          # Blob inferior izquierdo
-    └── fontawesome-free-5.9.0-web/
+src/
+├── components/   # Nav, Footer, Blob, ui/*, icons/*
+├── sections/     # Hero, Mission, About, Skills, Projects, Contact
+├── data/         # skills, projects, socials (contenido tipado)
+├── hooks/        # useContactForm, useScrollbarReveal, useMediaQuery
+├── lib/          # motion presets, wrap(), cn(), constants
+├── assets/       # logos, blobs, ilustraciones, íconos de tecnologías
+└── styles/       # tokens de marca (@theme) y estilos base
 ```
+
+## Desarrollo
+
+```
+npm install
+npm run dev        # servidor de desarrollo
+npm run typecheck  # tsc -b
+npm run build      # build de producción a dist/
+npm run preview    # sirve el build de producción localmente
+```
+
+## Contacto
+
+El formulario de contacto envía a una Edge Function de Supabase (validación, honeypot anti-spam, y reenvío por correo vía Resend).
+
+## Despliegue
+
+Cada push a `main` dispara `.github/workflows/deploy.yml`, que compila el sitio y lo publica en GitHub Pages. El dominio propio se mantiene vía `public/CNAME`.
 
 ## Redes sociales
 

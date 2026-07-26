@@ -1,0 +1,70 @@
+@import "tailwindcss";
+@import "@fontsource-variable/montserrat";
+
+@theme {
+  /* brand */
+  --color-teal:        #0F3443;
+  --color-teal-soft:   #17495C;
+  --color-teal-deep:   #0A2530;
+  --color-green:       #34E89E;
+  --color-green-soft:  #7CF2C4;
+  --color-green-deep:  #0F8A5F;
+  --color-ink:         #333333;
+  --color-muted:       #666666;
+  --color-muted-soft:  #555555;
+  --color-danger:      #C0392B;
+  --color-success:     #1A9C6D;
+
+  --font-sans: "Montserrat Variable", "Montserrat", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-card:  16px;
+  --radius-panel: 20px;
+  --radius-field: 8px;
+  --radius-pill:  30px;
+
+  --shadow-tile:      0 4px 16px rgb(0 0 0 / 0.09);
+  --shadow-card:      0 4px 24px rgb(0 0 0 / 0.08);
+  --shadow-card-lift: 0 18px 44px rgb(15 52 67 / 0.16);
+  --shadow-panel:     0 4px 30px rgb(0 0 0 / 0.10);
+  --shadow-cta:       0 8px 20px rgb(15 52 67 / 0.35);
+  --shadow-cta-hover: 0 12px 28px rgb(15 52 67 / 0.45);
+
+  --ease-out-quad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-in-quad:  cubic-bezier(0.55, 0.085, 0.68, 0.53);
+  --ease-brand:    cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  html {
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+  }
+
+  html.is-scrolling {
+    scrollbar-color: var(--color-teal) transparent;
+  }
+
+  html::-webkit-scrollbar { width: 8px; }
+  html::-webkit-scrollbar-track { background: transparent; }
+  html::-webkit-scrollbar-thumb { background: transparent; border-radius: 4px; }
+  html.is-scrolling::-webkit-scrollbar-thumb { background: var(--color-teal); }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+  }
+
+  body {
+    @apply font-sans text-ink bg-white antialiased overflow-x-hidden;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-green);
+    outline-offset: 2px;
+  }
+}
+
+@utility marquee-mask {
+  mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+}
