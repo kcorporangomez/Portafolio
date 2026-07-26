@@ -19,7 +19,7 @@ export const PROJECTS: Project[] = [
     slug: 'calculacredi',
     title: 'CalculaCredi',
     description:
-      'Simulador de préstamos en español —hipotecarios, personales y de vehículo—. Genera la tabla de amortización, desglosa capital e intereses, modela el ahorro por abonos extraordinarios y calcula de forma inversa cuánto puedes prestar.',
+      'Simulador de préstamos hipotecarios, personales y de vehículo. Genera la tabla de amortización, desglosa capital e intereses, modela el ahorro por abonos extraordinarios y calcula de forma inversa cuánto puedes prestar.',
     tags: ['Amortización', 'Abonos extraordinarios', 'Cálculo inverso', 'Gráficas'],
     href: 'https://calculacredi.com',
   },

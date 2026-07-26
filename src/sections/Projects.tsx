@@ -18,7 +18,7 @@ export function Projects() {
             key={project.slug}
             project={project}
             index={i}
-            className={i === 0 ? 'md:col-start-3 md:col-span-4' : 'md:col-start-7 md:col-span-4'}
+            className="md:col-span-6"
           />
         ))}
       </motion.div>
