@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { staggerContainer } from '@/lib/motion'
 import { BentoCell } from '@/components/ui/BentoCell'
+import { ButtonLink } from '@/components/ui/Button'
 import { GithubIcon } from '@/components/icons/GithubIcon'
 import { InstagramIcon } from '@/components/icons/InstagramIcon'
 import { LinkedinIcon } from '@/components/icons/LinkedinIcon'
@@ -33,14 +34,18 @@ export function Hero() {
           <BentoCell className="flex flex-col justify-center md:col-span-8">
             <h1
               aria-label="Hola, soy Kelvin Corporán"
-              className="text-[clamp(2rem,5vw,4rem)] font-extrabold leading-[1.05] tracking-tight text-teal"
+              className="text-[clamp(1.5rem,6vw,4rem)] font-extrabold leading-[1.05] tracking-tight text-teal"
             >
               <span className="inline-block align-baseline">
                 <RotatingGreeting />
               </span>{' '}
-              <span className="inline-block">Soy Kelvin Corporán</span>
+              <span className="inline-block whitespace-nowrap">Soy Kelvin Corporán</span>
             </h1>
-            <p className="mt-4 text-lg font-semibold text-muted">Desarrollador Fullstack</p>
+            <p className="mt-1 text-lg font-semibold text-muted">Desarrollador Fullstack</p>
+
+            <div className="mt-4">
+              <ButtonLink href="#contacto">Colaboremos</ButtonLink>
+            </div>
           </BentoCell>
 
           <BentoCell tone="dark" className="hidden aspect-square items-center justify-center md:col-span-4 md:flex">
