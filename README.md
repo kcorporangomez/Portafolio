@@ -34,14 +34,6 @@ npm run build      # build de producción a dist/
 npm run preview    # sirve el build de producción localmente
 ```
 
-## Contacto
-
-El formulario de contacto envía a una Edge Function de Supabase (validación, honeypot anti-spam, y reenvío por correo vía Resend).
-
-## Despliegue
-
-Cada push a `main` dispara `.github/workflows/deploy.yml`, que compila el sitio y lo publica en GitHub Pages. El dominio propio se mantiene vía `public/CNAME`.
-
 ## Redes sociales
 
 - GitHub: [github.com/kcorporangomez](https://github.com/kcorporangomez)
