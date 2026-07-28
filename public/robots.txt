@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://kelvincorporan.com/sitemap.xml
