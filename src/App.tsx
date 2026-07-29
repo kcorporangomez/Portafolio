@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useScrollbarReveal } from '@/hooks/useScrollbarReveal'
 import { Footer } from '@/components/Footer'
 import { Hero } from '@/sections/Hero'
@@ -8,6 +9,12 @@ import { Contact } from '@/sections/Contact'
 
 export default function App() {
   useScrollbarReveal()
+
+  useEffect(() => {
+    if (window.location.hash) {
+      window.history.replaceState(null, '', window.location.pathname + window.location.search)
+    }
+  }, [])
 
   return (
     <>
