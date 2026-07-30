@@ -1,7 +1,9 @@
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useScroll } from 'framer-motion'
 import { staggerContainer } from '@/lib/motion'
 import { BentoCell } from '@/components/ui/BentoCell'
 import { ButtonLink } from '@/components/ui/Button'
+import { VapourText } from '@/components/ui/vapour-text-effect'
 import { GithubIcon } from '@/components/icons/GithubIcon'
 import { InstagramIcon } from '@/components/icons/InstagramIcon'
 import { LinkedinIcon } from '@/components/icons/LinkedinIcon'
@@ -21,6 +23,12 @@ const SERVICES = ['Frontend', 'Backend', 'APIs REST', 'Bases de datos', 'Automat
 const SERVICE_ROTATIONS = ['-rotate-3', 'rotate-2', '-rotate-1', 'rotate-3', '-rotate-2', 'rotate-1']
 
 export function Hero() {
+  const nameRef = useRef<HTMLSpanElement>(null)
+  const { scrollYProgress: vapourProgress } = useScroll({
+    target: nameRef,
+    offset: ['start start', 'end start'],
+  })
+
   return (
     <section id="hero" className="relative pb-2 pt-3 md:pt-4">
       <motion.div
@@ -39,7 +47,12 @@ export function Hero() {
               <span className="inline-block align-baseline">
                 <RotatingGreeting />
               </span>{' '}
-              <span className="inline-block whitespace-nowrap">Soy Kelvin Corporán</span>
+              <VapourText
+                ref={nameRef}
+                text="Soy Kelvin Corporán"
+                progress={vapourProgress}
+                className="whitespace-nowrap"
+              />
             </h1>
             <p className="mt-1 text-lg font-semibold text-muted">Desarrollador Fullstack</p>
 
