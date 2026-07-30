@@ -37,7 +37,28 @@ export function Hero() {
         animate="visible"
         className="mx-auto flex max-w-350 flex-col gap-4 px-6 md:px-10"
       >
-        {/* Row 1: intro + avatar */}
+        {/* Row 1: social icons */}
+        <div className="grid grid-cols-3 gap-4">
+          {SOCIALS.map((social) => {
+            const Icon = SOCIAL_ICONS[social.icon]
+            return (
+              <BentoCell
+                key={social.href}
+                as="a"
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                hover
+                className="flex h-20 items-center justify-center p-0! md:h-24"
+              >
+                <span className="sr-only">{social.label}</span>
+                <Icon className="h-6 w-6 text-teal md:h-7 md:w-7" aria-hidden="true" />
+              </BentoCell>
+            )
+          })}
+        </div>
+
+        {/* Row 2: intro + avatar */}
         <div className="grid grid-cols-1 gap-4 md:grid-cols-12">
           <BentoCell className="@container flex flex-col justify-center md:col-span-8">
             <h1
@@ -64,27 +85,6 @@ export function Hero() {
           <BentoCell tone="dark" className="hidden items-center justify-center md:col-span-4 md:flex">
             <span className="text-4xl font-semibold tracking-tight">KC</span>
           </BentoCell>
-        </div>
-
-        {/* Row 2: social icons */}
-        <div className="grid grid-cols-3 gap-4">
-          {SOCIALS.map((social) => {
-            const Icon = SOCIAL_ICONS[social.icon]
-            return (
-              <BentoCell
-                key={social.href}
-                as="a"
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                hover
-                className="flex h-20 items-center justify-center p-0! md:h-24"
-              >
-                <span className="sr-only">{social.label}</span>
-                <Icon className="h-6 w-6 text-teal md:h-7 md:w-7" aria-hidden="true" />
-              </BentoCell>
-            )
-          })}
         </div>
 
         {/* Row 3: tools */}
