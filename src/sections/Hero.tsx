@@ -19,7 +19,22 @@ const SOCIAL_ICONS = {
   linkedin: LinkedinIcon,
 } as const
 
-const SERVICES = ['Frontend', 'Backend', 'APIs REST', 'Bases de datos', 'Automatización']
+const SERVICES = [
+  'Páginas web',
+  'Diseño de páginas web',
+  'Interfaces web',
+  'Experiencia de usuario',
+  'Servidores',
+  'Infraestructura',
+  'Apps',
+  'Integraciones',
+  'Organización de datos',
+  'Manejo de información',
+  'Estructura de datos',
+  'Procesos automáticos',
+  'Tareas automáticas',
+  'Flujos de trabajo automáticos',
+]
 const SERVICE_ROTATIONS = ['-rotate-3', 'rotate-2', '-rotate-1', 'rotate-3', '-rotate-2', 'rotate-1']
 
 export function Hero() {
