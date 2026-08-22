@@ -1,11 +1,17 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { cn } from '@/lib/cn'
+import { ChevronDownIcon } from '@/components/icons/ChevronDownIcon'
+
+export interface FieldOption {
+  value: string
+  label: string
+}
 
 interface FieldProps {
   id: string
   label: string
   type?: 'text' | 'email'
-  as?: 'input' | 'textarea'
+  as?: 'input' | 'textarea' | 'select'
   value: string
   onChange: (value: string) => void
   invalid?: boolean
@@ -13,6 +19,8 @@ interface FieldProps {
   maxLength?: number
   required?: boolean
   labelClassName?: string
+  options?: FieldOption[]
+  placeholder?: string
 }
 
 export function Field({
@@ -27,6 +35,8 @@ export function Field({
   maxLength,
   required,
   labelClassName = 'text-teal',
+  options,
+  placeholder,
 }: FieldProps) {
   const baseClasses = cn(
     'w-full rounded-field border bg-white px-4 py-3 text-[16px] text-ink outline-none transition-colors',
@@ -49,6 +59,30 @@ export function Field({
           rows={5}
           className={cn(baseClasses, 'resize-none')}
         />
+      ) : as === 'select' ? (
+        <div className="relative">
+          <select
+            id={id}
+            value={value}
+            onChange={(e) => onChange(e.target.value)}
+            required={required}
+            className={cn(
+              baseClasses,
+              'h-[50px] appearance-none truncate whitespace-nowrap pr-10 leading-[1.5]',
+              !value && 'text-muted',
+            )}
+          >
+            <option value="" disabled>
+              {placeholder ?? 'Selecciona una opción'}
+            </option>
+            {options?.map((option) => (
+              <option key={option.value} value={option.value} className="text-ink">
+                {option.label}
+              </option>
+            ))}
+          </select>
+          <ChevronDownIcon className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" />
+        </div>
       ) : (
         <input
           id={id}

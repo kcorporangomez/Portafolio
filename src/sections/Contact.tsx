@@ -3,11 +3,12 @@ import { staggerContainer, viewportOnce } from '@/lib/motion'
 import { BentoCell } from '@/components/ui/BentoCell'
 import { Field } from '@/components/ui/Field'
 import { Button } from '@/components/ui/Button'
-import { useContactForm } from '@/hooks/useContactForm'
+import { useContactForm, SERVICE_OPTIONS } from '@/hooks/useContactForm'
 
 const TOOLTIPS = {
   nombre: 'Escribe tu nombre',
   correo: 'Escribe un correo válido',
+  servicio: 'Selecciona un servicio',
   comentario: 'Escribe un comentario',
 } as const
 
@@ -62,6 +63,21 @@ export function Contact() {
                 invalid={invalid.has('correo')}
                 tooltip={TOOLTIPS.correo}
                 maxLength={254}
+                required
+              />
+            </div>
+
+            <div className="mt-8">
+              <Field
+                id="servicio"
+                label="Servicio de interés"
+                as="select"
+                options={[...SERVICE_OPTIONS]}
+                placeholder="¿Qué servicio necesitas?"
+                value={values.servicio}
+                onChange={(v) => onChange('servicio', v)}
+                invalid={invalid.has('servicio')}
+                tooltip={TOOLTIPS.servicio}
                 required
               />
             </div>

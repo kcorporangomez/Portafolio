@@ -2,16 +2,28 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import type { FormEvent } from 'react'
 import { CONTACT_ENDPOINT } from '@/lib/constants'
 
-export type FieldName = 'nombre' | 'correo' | 'comentario'
+export type FieldName = 'nombre' | 'correo' | 'servicio' | 'comentario'
 
 interface FormValues {
   nombre: string
   correo: string
+  servicio: string
   comentario: string
   website: string
 }
 
-const EMPTY: FormValues = { nombre: '', correo: '', comentario: '', website: '' }
+export const SERVICE_OPTIONS = [
+  { value: 'paginas-web', label: 'Páginas web' },
+  { value: 'backend', label: 'Backend e infraestructura' },
+  { value: 'integraciones', label: 'Integraciones entre sistemas' },
+  { value: 'bases-datos', label: 'Bases de datos' },
+  { value: 'automatizacion', label: 'Automatización de procesos' },
+  { value: 'otro', label: 'Otro / no estoy seguro' },
+] as const
+
+const SERVICE_VALUES = new Set<string>(SERVICE_OPTIONS.map((option) => option.value))
+
+const EMPTY: FormValues = { nombre: '', correo: '', servicio: '', comentario: '', website: '' }
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const AUTO_CLEAR_MS = 10000
 
@@ -21,6 +33,7 @@ function validate(values: FormValues): Set<FieldName> {
   const errors = new Set<FieldName>()
   if (!values.nombre.trim()) errors.add('nombre')
   if (!EMAIL_RE.test(values.correo.trim())) errors.add('correo')
+  if (!SERVICE_VALUES.has(values.servicio)) errors.add('servicio')
   if (!values.comentario.trim()) errors.add('comentario')
   return errors
 }
@@ -74,6 +87,7 @@ export function useContactForm() {
           body: JSON.stringify({
             name: values.nombre,
             email: values.correo,
+            service: values.servicio,
             comment: values.comentario,
             website: values.website,
           }),
