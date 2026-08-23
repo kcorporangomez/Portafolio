@@ -17,6 +17,7 @@ import json from '@/assets/tech/json.svg'
 import vscode from '@/assets/tech/vscode.svg'
 import tailwindcss from '@/assets/tech/tailwindcss.svg'
 import github from '@/assets/tech/github.svg'
+import claudeAi from '@/assets/tech/claude-ai-icon.svg'
 
 export interface Skill {
   icon: string
@@ -44,4 +45,5 @@ export const SKILLS: Skill[] = [
   { icon: vscode, label: 'VS CODE', alt: 'Visual Studio Code' },
   { icon: tailwindcss, label: 'TAILWIND', alt: 'Tailwind CSS' },
   { icon: github, label: 'GITHUB', alt: 'GitHub' },
+  { icon: claudeAi, label: 'CLAUDE', alt: 'Claude AI' },
 ]
