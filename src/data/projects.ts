@@ -8,14 +8,6 @@ export interface Project {
 
 export const PROJECTS: Project[] = [
   {
-    slug: 'portafolio-v2',
-    title: 'Portafolio v2',
-    description:
-      'Mi portafolio personal, rediseñado y reconstruido desde cero en React, TypeScript y Tailwind, con animaciones a medida y despliegue continuo.',
-    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
-    href: 'https://kelvincorporan.com',
-  },
-  {
     slug: 'calculacredi',
     title: 'CalculaCredi',
     description:
@@ -30,5 +22,13 @@ export const PROJECTS: Project[] = [
       'Sitio web para una empresa de transporte y logística en Santo Domingo. Presenta sus servicios de mudanzas, transporte refrigerado y equipos cinematográficos, con formulario de contacto y solicitud de presupuesto.',
     tags: ['Mudanzas', 'Logística', 'Formulario de contacto'],
     href: 'https://transcabralrd.com',
+  },
+  {
+    slug: 'portafolio-v2',
+    title: 'Portafolio v2',
+    description:
+      'Mi portafolio personal, rediseñado y reconstruido desde cero en React, TypeScript y Tailwind, con animaciones a medida y despliegue continuo.',
+    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+    href: 'https://kelvincorporan.com',
   },
 ]
