@@ -23,4 +23,12 @@ export const PROJECTS: Project[] = [
     tags: ['Amortización', 'Abonos extraordinarios', 'Cálculo inverso', 'Gráficas'],
     href: 'https://calculacredi.com',
   },
+  {
+    slug: 'transcabral',
+    title: 'TransCabral',
+    description:
+      'Sitio web para una empresa de transporte y logística en Santo Domingo. Presenta sus servicios de mudanzas, transporte refrigerado y equipos cinematográficos, con formulario de contacto y solicitud de presupuesto.',
+    tags: ['Mudanzas', 'Logística', 'Formulario de contacto'],
+    href: 'https://transcabralrd.com',
+  },
 ]
