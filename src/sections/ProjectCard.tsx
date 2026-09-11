@@ -24,7 +24,7 @@ export function ProjectCard({ project, index, className }: ProjectCardProps) {
       transition={{ type: 'spring', stiffness: 260, damping: 24 }}
       className={cn('group relative flex flex-col overflow-hidden rounded-card cursor-pointer', className)}
     >
-      <div className="relative aspect-[16/10] shrink-0 overflow-hidden">
+      <div className="relative aspect-[21/9] shrink-0 overflow-hidden md:aspect-[16/10]">
         <div className="absolute inset-0 bg-linear-to-br from-teal-soft to-green" />
         <img
           src={project.image}
@@ -47,22 +47,24 @@ export function ProjectCard({ project, index, className }: ProjectCardProps) {
         </div>
       </div>
 
-      <div className="relative flex flex-1 flex-col overflow-hidden bg-teal p-6 md:p-8">
+      <div className="relative flex flex-1 flex-col overflow-hidden bg-teal p-4 md:p-8">
         <span className="pointer-events-none absolute -top-3 right-4 select-none text-[5rem] font-semibold leading-none text-white/5 md:-top-5 md:text-[6.5rem]">
           {String(index + 1).padStart(2, '0')}
         </span>
 
         <div className="relative flex flex-1 flex-col">
           <h3 className="text-xl font-bold text-white md:text-2xl">{project.title}</h3>
-          <p className="mt-3 text-sm leading-relaxed text-white/70 md:text-base">{project.description}</p>
+          <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-white/70 md:mt-3 md:line-clamp-none md:text-base">
+            {project.description}
+          </p>
 
-          <div className="mt-5 flex flex-wrap gap-2">
+          <div className="mt-3 flex flex-wrap gap-1.5 md:mt-5 md:gap-2">
             {project.tags.map((tag) => (
               <Tag key={tag}>{tag}</Tag>
             ))}
           </div>
 
-          <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-green">
+          <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-green md:mt-6">
             Ver sitio
             <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
           </span>
