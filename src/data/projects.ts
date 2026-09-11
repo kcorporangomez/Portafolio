@@ -40,3 +40,18 @@ export const PROJECTS: Project[] = [
     image: portafolioV2Image,
   },
 ]
+
+/**
+ * Orden del stack "Proyectos recientes" del Hero, independiente del carrusel
+ * (que recorre PROJECTS tal cual). Un proyecto que no esté aquí queda al final.
+ */
+const HERO_ORDER = ['portafolio-v2', 'calculacredi', 'transcabral']
+
+const heroRank = (slug: string) => {
+  const i = HERO_ORDER.indexOf(slug)
+  return i === -1 ? HERO_ORDER.length : i
+}
+
+export const HERO_PROJECTS: Project[] = [...PROJECTS].sort(
+  (a, b) => heroRank(a.slug) - heroRank(b.slug),
+)

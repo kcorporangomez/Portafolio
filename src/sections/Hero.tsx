@@ -11,7 +11,7 @@ import { ArrowUpRight } from '@/components/icons/ArrowUpRight'
 import { RotatingGreeting } from './RotatingGreeting'
 import { SkillsMarquee } from './SkillsMarquee'
 import { SOCIALS } from '@/data/socials'
-import { PROJECTS } from '@/data/projects'
+import { HERO_PROJECTS } from '@/data/projects'
 
 const SOCIAL_ICONS = {
   github: GithubIcon,
@@ -119,7 +119,7 @@ export function Hero() {
             </div>
 
             <div className="relative mt-6 h-24">
-              {[...PROJECTS].reverse().map((project, i) => (
+              {HERO_PROJECTS.map((project, i) => (
                 <div
                   key={project.slug}
                   className="absolute top-0 flex h-20 w-28 items-end rounded-lg bg-linear-to-br from-teal-soft to-green p-2 shadow-tile"
